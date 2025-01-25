@@ -1,0 +1,9 @@
+
+
+dev
+~~~~
+logging.level.org.spring.framework=trace
+
+prod
+~~~~
+logging.level.org.spring.framework=info
