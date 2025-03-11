@@ -1,0 +1,14 @@
+datasource:
+    default:
+      url: jdbc:mysql://localhost:3306/default_db
+      username: root
+      password: root
+    tenants:
+      tenant1:
+        url: jdbc:mysql://localhost:3306/tenant1_db
+        username: root
+        password: root
+      tenant2:
+        url: jdbc:mysql://localhost:3306/tenant2_db
+        username: root
+        password: root

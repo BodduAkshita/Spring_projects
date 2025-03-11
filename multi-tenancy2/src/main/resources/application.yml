@@ -1,0 +1,30 @@
+spring:
+  datasource:
+    tenant1:
+      url: jdbc:mysql://localhost:3306/tenant1_db
+      username: root
+      password: Akshita@1308
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      hikari:
+        pool-name: Tenant1HikariPool
+        maximum-pool-size: 10
+    tenant2:
+      url: jdbc:mysql://localhost:3306/tenant2_db
+      username: root
+      password: Akshita@1308
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      hikari:
+        pool-name: Tenant2HikariPool
+        maximum-pool-size: 10
+
+  jpa:
+    hibernate:
+      ddl-auto: update  # You can change this to 'create' for creating tables on startup
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+
+  # Additional configurations
+  logging:
+    level:
+      org.hibernate.SQL: DEBUG
+      org.hibernate.type.descriptor.sql.BasicBinder: TRACE

@@ -1,0 +1,54 @@
+spring:
+  application:
+    name: expense-tracker
+
+  # Multi-Tenant DataSource Configuration
+  datasource:
+    tenant1:
+      url: jdbc:mysql://localhost:3306/tenant_db1
+      username: root
+      password: Akshita@1308
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      hikari:
+        pool-name: Tenant1HikariPool
+        maximum-pool-size: 10
+        minimum-idle: 5
+        connection-timeout: 30000
+        idle-timeout: 300000
+        max-lifetime: 1200000
+        keepalive-time: 60000
+
+    tenant2:
+      url: jdbc:mysql://localhost:3306/tenant_db2
+      username: root
+      password: Akshita@1308
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      hikari:
+        pool-name: Tenant2HikariPool
+        maximum-pool-size: 10
+        minimum-idle: 5
+        connection-timeout: 30000
+        idle-timeout: 300000
+        max-lifetime: 1200000
+        keepalive-time: 60000
+
+  # Hibernate & JPA Configuration
+  jpa:
+    hibernate:
+      ddl-auto: update  # Change to 'create' only for first-time table creation
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
+  # Logging Configuration
+  logging:
+    level:
+      org.hibernate.SQL: DEBUG  # Logs SQL queries
+      org.hibernate.type.descriptor.sql.BasicBinder: TRACE  # Logs query parameters
+      org.springframework: INFO  # General Spring logs
+
+# Custom configurations
+app:
+  default-tenant: tenant1  # Set default tenant if not provided in request headers
